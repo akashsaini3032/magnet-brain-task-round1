@@ -1,52 +1,67 @@
-const UserModel= require("../models/userModel");
-const TaskModel= require("../models/taskModel");
 
-const loginCheck=async(req, res)=>{
-    const { email, password}=req.body;
-    
-    try {
-          const User = await UserModel.findOne({email:email});
-          if (!User)
-          {
-            res.status(400).send({msg:"Invalid Email Id!"})
-          }
-          if (User.password!=password)
-          {
-             res.status(400).send({msg:"Invalid Password!"})
-          }
-          res.status(200).send({msg:"Login Successfully!", User})
-    } catch (error) {
-         console.log(error);
-    }
-     
-}
 
-const myTaskList=async(req, res)=>{
-  const { id } = req.query;
-  console.log(id);
-   try {
-        const Task= await TaskModel.find({userid:id});
-        console.log(Task);
-        res.status(200).send(Task);
-   } catch (error) {
-     console.log(error);
-   }
-}
 
-const taskComplete=async(req, res)=>{
-  const {id}= req.query;
+
+const UserModel = require("../models/userModel");
+const TaskModel = require("../models/taskModel");
+
+// ✅ User login with ID and password
+const loginCheck = async (req, res) => {
+  const { userid, password } = req.body;
 
   try {
-         const Task= await TaskModel.findByIdAndUpdate(id, {taskstatus:true});
-         res.status(201).send({Task:Task, msg:"Succesfully Updated"});
+    const User = await UserModel.findOne({ userid });
+    if (!User) {
+      return res.status(400).send({ msg: "Invalid User ID!" });
+    }
+
+    if (User.password !== password) {
+      return res.status(400).send({ msg: "Invalid Password!" });
+    }
+
+    res.status(200).send({ msg: "Login Successfully!", User });
   } catch (error) {
-     console.log(error);
+    console.error(error);
+    res.status(500).send({ msg: "Server Error" });
   }
-}
+};
 
+// ✅ Fetch all tasks assigned to a user
+const myTaskList = async (req, res) => {
+  const { id } = req.query;
+  try {
+    const tasks = await TaskModel.find({ userid: id });
+    res.status(200).send(tasks);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ msg: "Error fetching tasks" });
+  }
+};
 
-module.exports={
-    loginCheck,
-    myTaskList,
-    taskComplete
-}
+// ✅ Toggle task complete / pending
+const toggleTaskStatus = async (req, res) => {
+  const { id } = req.query;
+
+  try {
+    const task = await TaskModel.findById(id);
+    if (!task) {
+      return res.status(404).send({ msg: "Task not found" });
+    }
+
+    const updatedStatus = !task.taskstatus;
+    await TaskModel.findByIdAndUpdate(id, { taskstatus: updatedStatus });
+
+    res.status(200).send({
+      msg: `Task marked as ${updatedStatus ? "Complete" : "Pending"}`,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ msg: "Error updating task status" });
+  }
+};
+
+module.exports = {
+  loginCheck,
+  myTaskList,
+  toggleTaskStatus,
+};

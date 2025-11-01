@@ -9,7 +9,7 @@ const Layout=()=>{
            <div id="container">
            <Outlet />
            </div>
-           <Footer/>
+           
         </>
     )
 }
