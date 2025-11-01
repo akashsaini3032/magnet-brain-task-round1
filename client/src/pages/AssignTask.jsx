@@ -160,7 +160,7 @@
 
 
 
-//with css
+
 
 import { useState, useEffect } from "react";
 import BackEndUrl from "../config/BackendUrl";
@@ -262,7 +262,7 @@ const AssignTask = () => {
         </h2>
 
         <Form onSubmit={handleSubmit}>
-          {/* Select User */}
+     
           <Form.Group className="mb-3">
             <Form.Label
               style={{
@@ -293,7 +293,7 @@ const AssignTask = () => {
             />
           </Form.Group>
 
-          {/* Task Title */}
+
           <Form.Group className="mb-3">
             <Form.Label
               style={{
@@ -319,7 +319,7 @@ const AssignTask = () => {
             />
           </Form.Group>
 
-          {/* Description */}
+
           <Form.Group className="mb-3">
             <Form.Label
               style={{
@@ -346,7 +346,7 @@ const AssignTask = () => {
             />
           </Form.Group>
 
-          {/* Completion Day */}
+     
           <Form.Group className="mb-3">
             <Form.Label
               style={{
@@ -372,7 +372,7 @@ const AssignTask = () => {
             />
           </Form.Group>
 
-          {/* Priority */}
+       
           <Form.Group className="mb-4">
             <Form.Label
               style={{

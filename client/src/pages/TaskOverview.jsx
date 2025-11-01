@@ -25,9 +25,9 @@ const TaskOverview = () => {
   const [showUserModal, setShowUserModal] = useState(false);
   const [searchUser, setSearchUser] = useState("");
 
-  const limit = 5; // tasks per page
+  const limit = 5; 
 
-  // 🔹 Load all users
+
   const loadUsers = async () => {
     try {
       const res = await axios.get(`${BackEndUrl}/admin/showuserdata`);
@@ -38,7 +38,7 @@ const TaskOverview = () => {
     }
   };
 
-  // 🔹 Load paginated tasks
+
   const loadTasks = async (page = 1, userId = "") => {
     setLoading(true);
     try {
@@ -67,13 +67,13 @@ const TaskOverview = () => {
     loadTasks(1, userId);
   };
 
-  // 🔹 Edit Task Modal open
+
   const handleEdit = (task) => {
     setEditTask(task);
     setShowEditModal(true);
   };
 
-  // 🔹 Save Edited Task
+
   const handleSaveEdit = async () => {
     try {
       await axios.put(`${BackEndUrl}/admin/edittask/${editTask._id}`, {
@@ -90,7 +90,7 @@ const TaskOverview = () => {
     }
   };
 
-  // 🔹 Delete Task
+
   const handleDelete = async (id) => {
     const confirm = await Swal.fire({
       title: "Are you sure?",
@@ -111,7 +111,7 @@ const TaskOverview = () => {
     }
   };
 
-  // 🔹 Toggle Status (Pending ↔ Complete)
+
   const toggleStatus = async (id) => {
     try {
       await axios.get(`${BackEndUrl}/admin/changetaskstatus?id=${id}`);
@@ -121,7 +121,7 @@ const TaskOverview = () => {
     }
   };
 
-  // 🔹 Change Priority
+
   const handlePriorityChange = async (id, newPriority) => {
     try {
       await axios.put(`${BackEndUrl}/admin/changepriority`, {
@@ -134,7 +134,7 @@ const TaskOverview = () => {
     }
   };
 
-  // 🔹 Delete User
+
   const handleDeleteUser = async (userId) => {
     const confirm = await Swal.fire({
       title: "Delete User?",
@@ -172,7 +172,7 @@ const TaskOverview = () => {
     <div className="container mt-4">
       <h2 className="mb-3 text-center">📋 Task Overview</h2>
 
-      {/* 🔹 Summary */}
+  
       <div className="d-flex justify-content-between align-items-center mb-3">
         <div>
           <strong>Total Users:</strong> {totalUsers} |{" "}
@@ -202,7 +202,7 @@ const TaskOverview = () => {
         </div>
       </div>
 
-      {/* 🔹 Tasks Table */}
+
       {loading ? (
         <div className="text-center mt-5">
           <Spinner animation="border" variant="primary" />
@@ -279,7 +279,7 @@ const TaskOverview = () => {
         </Table>
       )}
 
-      {/* 🔹 Pagination */}
+
       <div className="d-flex justify-content-center align-items-center mt-3">
         <Button
           variant="outline-primary"
@@ -302,7 +302,7 @@ const TaskOverview = () => {
         </Button>
       </div>
 
-      {/* 🔹 Edit Task Modal */}
+ 
       <Modal show={showEditModal} onHide={() => setShowEditModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Edit Task</Modal.Title>
@@ -345,8 +345,8 @@ const TaskOverview = () => {
           </Form>
         </Modal.Body>
       </Modal>
-
-      {/* 🔹 Manage Users Modal */}
+  
+  
       <Modal show={showUserModal} onHide={() => setShowUserModal(false)} size="lg">
         <Modal.Header closeButton>
           <Modal.Title>Manage Users</Modal.Title>

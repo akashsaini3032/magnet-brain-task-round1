@@ -1,9 +1,4 @@
-/* -------------------------------
-   Task Overview — Professional Theme
-   Works with your existing JSX
-   ------------------------------- */
 
-/* Page container and heading */
 .container.mt-4 {
   background: linear-gradient(135deg, #eef2ff 0%, #f9fafb 100%);
   min-height: 100vh;
@@ -20,12 +15,12 @@
   letter-spacing: 0.5px;
 }
 
-/* Summary info */
+
 .container.mt-4 strong {
   color: #334155;
 }
 
-/* Dropdown + Manage button area */
+
 .container.mt-4 .form-select {
   border-radius: 8px !important;
   border-color: #cbd5e1 !important;
@@ -39,7 +34,7 @@
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15) !important;
 }
 
-/* Bootstrap Table customization */
+
 .table {
   background-color: #ffffff;
   border-radius: 10px;
@@ -63,7 +58,7 @@
   transform: scale(1.005);
 }
 
-/* Buttons */
+
 .btn {
   border-radius: 8px !important;
   font-weight: 500;
@@ -119,7 +114,7 @@
   background-color: #16a34a !important;
 }
 
-/* Pagination */
+
 .d-flex.justify-content-center.align-items-center.mt-3 {
   margin-top: 30px !important;
 }
@@ -129,7 +124,7 @@
   border-radius: 8px;
 }
 
-/* Modals */
+
 .modal-content {
   border-radius: 12px !important;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
@@ -151,7 +146,7 @@
   background-color: #f8fafc;
 }
 
-/* Form controls inside modal */
+
 .modal-body input,
 .modal-body textarea,
 .modal-body select {
@@ -161,7 +156,7 @@
   padding: 8px 10px !important;
 }
 
-/* Table inside Manage User Modal */
+
 .table.table-striped.table-bordered.table-hover {
   font-size: 14px;
 }
@@ -175,13 +170,12 @@
   background-color: #f1f5f9 !important;
 }
 
-/* Loading Spinner text */
+
 .text-center.mt-5 p {
   color: #475569;
   font-size: 15px;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .container.mt-4 {
     padding: 15px;

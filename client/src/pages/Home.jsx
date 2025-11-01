@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 const Home = () => {
   const [loginId, setLoginId] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState("admin"); // default is admin
+  const [role, setRole] = useState("admin"); 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {

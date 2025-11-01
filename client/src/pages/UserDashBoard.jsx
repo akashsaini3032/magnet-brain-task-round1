@@ -17,7 +17,7 @@ const UserDashboard = () => {
 
   return (
     <div style={{ minHeight: "100vh", backgroundColor: "#f4f6f9" }}>
-      {/* ===== Top Header ===== */}
+   
       <header
         style={{
           backgroundColor: "#4e73df",
@@ -59,7 +59,7 @@ const UserDashboard = () => {
         </div>
       </header>
 
-      {/* ===== Sidebar + Content Layout ===== */}
+   
       <div
         style={{
           display: "flex",
@@ -67,7 +67,7 @@ const UserDashboard = () => {
           minHeight: "calc(100vh - 80px)",
         }}
       >
-        {/* Sidebar */}
+
         <aside
           style={{
             width: "240px",
@@ -126,7 +126,6 @@ const UserDashboard = () => {
             </Nav.Link>
           </Nav>
 
-          {/* Footer inside sidebar */}
           <div
             style={{
               marginTop: "auto",
@@ -140,7 +139,7 @@ const UserDashboard = () => {
           </div>
         </aside>
 
-        {/* Main Content */}
+     
         <main
           style={{
             flex: 1,

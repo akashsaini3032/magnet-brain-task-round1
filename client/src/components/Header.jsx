@@ -11,7 +11,7 @@ import Swal from "sweetalert2";
 const Header = () => {
   const navigate = useNavigate();
 
-  // 🔹 Check login before navigation
+
   const handleNavClick = (path) => {
     const isLoggedIn = localStorage.getItem("username");
     if (!isLoggedIn) {

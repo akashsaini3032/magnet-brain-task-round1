@@ -11,9 +11,9 @@ const taskSchema = new mongoose.Schema({
   taskstatus: { type: Boolean, default: false },
   priority: {
     type: String,
-    enum: ["High", "Medium", "Low"], // 🔥 only allows these values
-    default: "Medium", // default priority
+    enum: ["High", "Medium", "Low"], 
+    default: "Medium", 
   },
-}, { timestamps: true }); // helpful for sorting later
+}, { timestamps: true }); 
 
 module.exports = mongoose.model("task", taskSchema);

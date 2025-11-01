@@ -1,4 +1,4 @@
-/* Independent styling for Header component */
+
 .header-container {
   background: linear-gradient(90deg, #1e3c72, #2a5298);
   color: #fff;
@@ -13,7 +13,7 @@
   z-index: 1000;
 }
 
-/* Left Logo */
+
 .logo-text {
   font-size: 1.6rem;
   font-weight: 700;
@@ -26,7 +26,7 @@
   color: #ffcc00;
 }
 
-/* Center Navigation */
+
 .header-nav {
   display: flex;
   gap: 25px;
@@ -60,7 +60,8 @@
   color: #ffcc00;
 }
 
-/* Right Section */
+
+
 .header-right {
   display: flex;
   align-items: center;
@@ -78,7 +79,7 @@
   color: #ffcc00;
 }
 
-/* Logout Button */
+
 .logout-btn {
   background-color: #ff4757;
   color: #fff;
@@ -96,7 +97,7 @@
   box-shadow: 0 3px 10px rgba(255, 71, 87, 0.4);
 }
 
-/* Responsive Design */
+
 @media (max-width: 900px) {
   .header-container {
     flex-wrap: wrap;

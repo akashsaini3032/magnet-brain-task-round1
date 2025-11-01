@@ -39,7 +39,7 @@ const MyTask = () => {
     loadData();
   }, []);
 
-  // 🔍 Search Filter
+
   useEffect(() => {
     const result = mydata.filter(
       (task) =>
@@ -51,7 +51,7 @@ const MyTask = () => {
     setFilteredData(result);
   }, [search, mydata]);
 
-  // 🔄 Toggle Task Status (Complete ↔ Pending)
+
   const toggleTaskStatus = async (id) => {
     const api = `${BackEndUrl}/user/toggle-task-status/?id=${id}`;
     try {
@@ -62,7 +62,7 @@ const MyTask = () => {
     }
   };
 
-  // ⏫ Sorting by priority or completion date
+
   const sortData = (type) => {
     const sorted = [...filteredData].sort((a, b) => {
       if (type === "priority") {
@@ -81,7 +81,7 @@ const MyTask = () => {
     setSortOrder(sortOrder === "asc" ? "desc" : "asc");
   };
 
-  // 🏷️ Priority Badge Color
+
   const getPriorityBadge = (priority) => {
     switch (priority) {
       case "High":

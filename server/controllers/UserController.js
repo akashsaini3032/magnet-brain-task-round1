@@ -5,7 +5,7 @@
 const UserModel = require("../models/userModel");
 const TaskModel = require("../models/taskModel");
 
-// ✅ User login with ID and password
+
 const loginCheck = async (req, res) => {
   const { userid, password } = req.body;
 
@@ -26,7 +26,7 @@ const loginCheck = async (req, res) => {
   }
 };
 
-// ✅ Fetch all tasks assigned to a user
+
 const myTaskList = async (req, res) => {
   const { id } = req.query;
   try {
@@ -38,7 +38,7 @@ const myTaskList = async (req, res) => {
   }
 };
 
-// ✅ Toggle task complete / pending
+
 const toggleTaskStatus = async (req, res) => {
   const { id } = req.query;
 

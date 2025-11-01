@@ -14,7 +14,6 @@ const TaskDetail = () => {
   const [editData, setEditData] = useState({});
   const [showEditModal, setShowEditModal] = useState(false);
 
-  // ✅ Load all tasks
   const loadData = async () => {
     try {
       const res = await axios.get(`${BackEndUrl}/admin/taskdetail`);
@@ -28,7 +27,7 @@ const TaskDetail = () => {
     loadData();
   }, []);
 
-  // ✅ Update task priority when dragged
+
   const updatePriority = async (id, priority) => {
     try {
       await axios.put(`${BackEndUrl}/admin/changepriority`, { id, priority });
@@ -38,7 +37,6 @@ const TaskDetail = () => {
     }
   };
 
-  // ✅ Delete task with confirmation
   const deleteTask = async (id) => {
     const confirm = await Swal.fire({
       title: "Are you sure?",
@@ -60,7 +58,7 @@ const TaskDetail = () => {
     }
   };
 
-  // ✅ Edit modal logic
+
   const handleEditShow = (task) => {
     setEditData(task);
     setShowEditModal(true);
@@ -87,7 +85,7 @@ const TaskDetail = () => {
     }
   };
 
-  // ✅ Toggle task status (Pending <-> Complete)
+
   const changeTaskStatus = async (id) => {
     try {
       await axios.get(`${BackEndUrl}/admin/changetaskstatus/?id=${id}`);
@@ -97,7 +95,7 @@ const TaskDetail = () => {
     }
   };
 
-  // ✅ Drag & Drop handler
+
   const onDragEnd = (result) => {
     const { destination, source, draggableId } = result;
     if (!destination) return;
@@ -205,7 +203,7 @@ const TaskDetail = () => {
         </div>
       </DragDropContext>
 
-      {/* Edit Task Modal */}
+
       <Modal show={showEditModal} onHide={() => setShowEditModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Edit Task</Modal.Title>

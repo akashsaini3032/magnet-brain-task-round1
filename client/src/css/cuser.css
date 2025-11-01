@@ -1,9 +1,5 @@
 
-/* ==========================================
-   CreateUser Component Styling (Independent)
-   Refined premium design with teal-blue theme
-   Prefix: cu- to prevent conflicts
-   ========================================== */
+
 
 h2.text-center {
   font-family: "Poppins", sans-serif;
@@ -18,7 +14,7 @@ h2.text-center {
   letter-spacing: 0.5px;
 }
 
-/* Form Container */
+
 form {
   background: #ffffff;
   border-radius: 16px;
@@ -34,7 +30,7 @@ form:hover {
   box-shadow: 0 12px 32px rgba(15, 23, 42, 0.15);
 }
 
-/* Form Labels */
+
 form label {
   font-weight: 500;
   color: #1e293b;
@@ -43,7 +39,7 @@ form label {
   font-size: 0.95rem;
 }
 
-/* Inputs & Selects */
+
 form input,
 form select {
   border: 1px solid #cbd5e1;
@@ -63,7 +59,7 @@ form select:focus {
   background-color: #ffffff;
 }
 
-/* Submit Button */
+
 button[type="submit"] {
   background: linear-gradient(135deg, #0ea5e9, #3b82f6);
   border: none;
@@ -83,18 +79,17 @@ button[type="submit"]:hover {
   box-shadow: 0 6px 16px rgba(14, 165, 233, 0.4);
 }
 
-/* Placeholder Styling */
 form input::placeholder {
   color: #94a3b8;
   font-size: 0.9rem;
 }
 
-/* Spacing and Layout */
+
 .mb-3 {
   margin-bottom: 1.3rem !important;
 }
 
-/* Responsive Design */
+
 @media (max-width: 480px) {
   form {
     width: 90% !important;
@@ -106,7 +101,7 @@ form input::placeholder {
   }
 }
 
-/* Optional glow animation for focus */
+
 @keyframes cu-glow {
   0% {
     box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.3);

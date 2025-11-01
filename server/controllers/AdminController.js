@@ -10,19 +10,19 @@ const nodemailer = require("nodemailer");
 const User = require("../models/userModel");
 const Task = require("../models/taskModel");
 
-// === Helper: create transporter using env variables (recommended) ===
+
 const createTransporter = () => {
-  // Use environment variables in production: process.env.MAIL_USER, process.env.MAIL_PASS
+
   return nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: process.env.MAIL_USER || "", // set in .env
-      pass: process.env.MAIL_PASS || "", // set in .env (app password)
+      user: process.env.MAIL_USER || "", 
+      pass: process.env.MAIL_PASS || "", 
     },
   });
 };
 
-// ---------------- Admin Login ----------------
+
 const adminLogin = async (req, res) => {
   const { adminid, password } = req.body;
   try {
@@ -39,21 +39,21 @@ const adminLogin = async (req, res) => {
   }
 };
 
-// ---------------- Create User (manual User ID + email credentials) ----------------
+
 const createUser = async (req, res) => {
   const { userid, name, email, designation } = req.body;
 
   try {
-    // 1. Validate inputs
+  
     if (!userid || !name || !email || !designation) {
       return res.status(400).send({ msg: "All fields are required!" });
     }
 
-    // Normalize userid and email
+
     const normalizedId = String(userid).trim().toUpperCase();
     const normalizedEmail = String(email).trim().toLowerCase();
 
-    // 2. Check duplicates (by userid or email)
+
     const existing = await UserModel.findOne({
       $or: [{ userid: normalizedId }, { email: normalizedEmail }],
     });
@@ -62,10 +62,10 @@ const createUser = async (req, res) => {
       return res.status(400).send({ msg: "User ID or Email already exists!" });
     }
 
-    // 3. Generate password
-    const UserPass = userPassword(); // your existing random password middleware
 
-    // 4. Create user
+    const UserPass = userPassword(); 
+
+
     const newUser = await UserModel.create({
       userid: normalizedId,
       name: name.trim(),
@@ -74,7 +74,7 @@ const createUser = async (req, res) => {
       password: UserPass,
     });
 
-    // 5. Send credentials email
+
     const transporter = createTransporter();
     const mailOptions = {
       from: process.env.MAIL_FROM || "no-reply@taskapp.local",
@@ -97,7 +97,7 @@ Admin Team`,
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
         console.error("Email send error:", error);
-        // We created the user successfully but email failed to send
+    
         return res.status(201).send({
           msg: "User created but email failed to send.",
           user: { userid: normalizedId, email: normalizedEmail },
@@ -116,7 +116,7 @@ Admin Team`,
   }
 };
 
-// ---------------- Show all users ----------------
+
 const showUserData = async (req, res) => {
   try {
     const users = await UserModel.find().select("-password").sort({ createdAt: -1 });
@@ -127,7 +127,7 @@ const showUserData = async (req, res) => {
   }
 };
 
-// ---------------- Assign Task ----------------
+
 const assignTask = async (req, res) => {
   const { title, description, complday, userid, priority } = req.body;
   try {
@@ -145,7 +145,7 @@ const assignTask = async (req, res) => {
   }
 };
 
-// ---------------- Get All Tasks ----------------
+
 const taskDetail = async (req, res) => {
   try {
     const tasks = await TaskModel.find().populate("userid", "userid name email");
@@ -156,7 +156,7 @@ const taskDetail = async (req, res) => {
   }
 };
 
-// ---------------- Change Task Status (toggle) ----------------
+
 const changeTaskStatus = async (req, res) => {
   const { id } = req.query;
   try {
@@ -174,7 +174,7 @@ const changeTaskStatus = async (req, res) => {
   }
 };
 
-// ---------------- Edit Task ----------------
+
 const editTask = async (req, res) => {
   const { id } = req.params;
   const { title, description, compday, priority } = req.body;
@@ -191,7 +191,7 @@ const editTask = async (req, res) => {
   }
 };
 
-// ---------------- Delete Task ----------------
+
 const deleteTask = async (req, res) => {
   const { id } = req.params;
   try {
@@ -203,7 +203,7 @@ const deleteTask = async (req, res) => {
   }
 };
 
-// ---------------- Change Priority ----------------
+
 const changePriority = async (req, res) => {
   const { id, priority } = req.body;
   try {
@@ -215,7 +215,7 @@ const changePriority = async (req, res) => {
   }
 };
 
-// ---------------- Pagination (tasks) ----------------
+
 const getAllTasksPaginated = async (req, res) => {
   try {
     let { page = 1, limit = 10, userId } = req.query;
@@ -246,7 +246,7 @@ const getAllTasksPaginated = async (req, res) => {
   }
 };
 
-// ---------------- User Login (by userid) ----------------
+
 const userLogin = async (req, res) => {
   const { userid, password } = req.body;
   try {
@@ -272,10 +272,10 @@ const deleteUser = async (req, res) => {
   try {
     const userId = req.params.id;
 
-    // Delete user first
+ 
     await User.findByIdAndDelete(userId);
 
-    // Delete all tasks of that user
+
     await Task.deleteMany({ userid: userId });
 
     res.json({ msg: "User and their tasks deleted successfully" });

@@ -43,14 +43,14 @@ const AdminDashBoard = () => {
           </Link>
           <br /> <br />
 
-          {/* ✅ New Page for Overview */}
+      
           <Link to="taskoverview" className="adminmenu">
             Task Overview
           </Link>
         </div>
 
         <div id="rightdata">
-          {/* This renders the nested pages */}
+       
           <Outlet />
         </div>
       </div>

@@ -6,9 +6,9 @@ const userSchema = new mongoose.Schema({
   userid: {
     type: String,
     required: true,
-    unique: true, // must be unique so users can login by ID
+    unique: true, 
     trim: true,
-    uppercase: true, // optional: keep IDs uppercase
+    uppercase: true, 
   },
   name: { type: String, required: true, trim: true },
   email: { type: String, required: true, unique: true, trim: true, lowercase: true },
