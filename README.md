@@ -48,6 +48,6 @@ Only authorized users can create, view, edit, or delete tasks.
 
 Move tasks between different priority lists (High, Medium, Low).
 
-9. 🎨 Visual Representation
+9.  Visual Representation
 
 Each priority list is color-coded for quick identification.
